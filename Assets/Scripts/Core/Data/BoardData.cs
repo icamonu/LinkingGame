@@ -11,5 +11,10 @@ namespace Core.Data
         {
             Chips.Add(position, chip);
         }
+        
+        public void SetChip(Vector2Int position, ChipData chip)
+        {
+            Chips[position] = chip;
+        }
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Core.Data;
 using ScriptableObjects;
 using UnityEngine;
@@ -9,8 +10,10 @@ namespace Core
         [SerializeField] private LinkData _linkData;
         [SerializeField] private TouchController _touchController;
         [SerializeField] private ChipSelectionEventChannel _chipSelectionEventChannel;
-
+        [SerializeField] private ChipCollectionEventChannel _chipCollectionEventChannel;
+        
         private bool _isLinking = false;
+        private List<Vector2Int> _collectedChipPositions = new List<Vector2Int>();
         
         private void OnEnable()
         {
@@ -31,6 +34,7 @@ namespace Core
             if(_linkData.Link.Count!=0)
                 return;
             
+            _collectedChipPositions.Clear();
             _linkData.AddChip(chip);
             _isLinking = true;
         }
@@ -54,10 +58,10 @@ namespace Core
             {
                 foreach (var chip in _linkData.Link)
                 {
-                    chip.gameObject.SetActive(false);
+                    _collectedChipPositions.Add(chip.BoardPosition);
                 }
             }
-
+            _chipCollectionEventChannel.RaiseChipCollectionEvent(_collectedChipPositions);
             _linkData.ClearLink();
             _isLinking = false;
         }
