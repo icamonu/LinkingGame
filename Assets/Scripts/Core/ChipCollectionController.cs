@@ -24,7 +24,7 @@ namespace Core
         {
             foreach (Vector2Int chip in collectedChips)
             {
-                boardData.Chips[chip].gameObject.SetActive(false);
+                boardData.Chips[chip].OnCollected();
                 boardData.SetChip(chip, null);
             }
             

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Core.Data;
-using GameFlow;
+using Enums;
 using ScriptableObjects;
 using UnityEngine;
 using Random = UnityEngine.Random;

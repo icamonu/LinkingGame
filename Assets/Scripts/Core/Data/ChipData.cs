@@ -1,6 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
+using Enums;
 
 namespace Core.Data
 {
@@ -9,6 +10,7 @@ namespace Core.Data
         public Vector2Int BoardPosition { get; private set; }
         public int ChipType { get; private set; }
         public HashSet<Vector2Int> Neighbours { get; private set; } = new ();
+        public Action<ChipState> OnChipStateChanged;
         
         private int _boardWidth;
         private int _boardHeight;
@@ -23,13 +25,29 @@ namespace Core.Data
             spriteRenderer.sprite = sprite;
             ChipType = chipType;
             SetBoardPosition(boardPosition);
+            OnChipStateChanged?.Invoke(ChipState.Idle);
+        }
+        
+        public void OnAddedToLink()
+        {
+            OnChipStateChanged?.Invoke(ChipState.Selected);
+        }
+        
+        public void OnRemovedFromLink()
+        {
+            OnChipStateChanged?.Invoke(ChipState.Idle);
+        }
+        
+        public void OnCollected()
+        {
+            OnChipStateChanged?.Invoke(ChipState.Collected);
         }
 
         public void SetBoardPosition(Vector2Int boardPosition)
         {
             BoardPosition = boardPosition;
             FindNeighbours();
-            transform.DOMove(new Vector3(BoardPosition.x, BoardPosition.y, 0), 0.2f);
+            OnChipStateChanged?.Invoke(ChipState.Moving);
         }
 
         private void FindNeighbours()

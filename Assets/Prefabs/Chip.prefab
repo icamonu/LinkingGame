@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6657240139133439281}
   - component: {fileID: 8123901302666359271}
   - component: {fileID: 8080587051976049120}
+  - component: {fileID: 4406489386666534591}
   m_Layer: 6
   m_Name: Chip
   m_TagString: Untagged
@@ -89,6 +90,20 @@ MonoBehaviour:
   chipData: {fileID: 8123901302666359271}
   chipSelectionEventChannel: {fileID: 11400000, guid: c6b5c4f9c3a174ff487616d8ea483726, type: 2}
   gameStateChangeEventChannel: {fileID: 11400000, guid: 234094fbf067c422987d716d0ec911f6, type: 2}
+--- !u!114 &4406489386666534591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4382393755416007356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cceab2437814459b39dad3f9b293ac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chipData: {fileID: 8123901302666359271}
+  spriteTransform: {fileID: 4382393755937684802}
 --- !u!1 &4382393755937684803
 GameObject:
   m_ObjectHideFlags: 0

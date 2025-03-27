@@ -1,4 +1,4 @@
-namespace GameFlow
+namespace Enums
 {
     public enum GameState
     {

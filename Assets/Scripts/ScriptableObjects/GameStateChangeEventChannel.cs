@@ -1,5 +1,5 @@
 using System;
-using GameFlow;
+using Enums;
 using UnityEngine;
 
 namespace ScriptableObjects

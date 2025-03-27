@@ -23,15 +23,22 @@ namespace Core.Data
                 return;
             
             Link.AddLast(chip);
+            chip.OnAddedToLink();
         }
         
         public void RemoveLastChip()
         {
+            ChipData lastChip = Link.Last.Value;
+            lastChip.OnRemovedFromLink();
             Link.RemoveLast();
         }
         
         public void ClearLink()
         {
+            foreach (ChipData chip in Link)
+            {
+                chip.OnRemovedFromLink();
+            }
             Link.Clear();
             _collectedChipType = -1;
         }

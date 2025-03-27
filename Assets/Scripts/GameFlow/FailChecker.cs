@@ -1,5 +1,6 @@
 using ScriptableObjects;
 using UnityEngine;
+using Enums;
 
 namespace GameFlow
 {
