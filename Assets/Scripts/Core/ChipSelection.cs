@@ -1,14 +1,12 @@
-using Core.Data;
 using Enums;
 using ScriptableObjects;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Core
 {
     public class ChipSelection : MonoBehaviour
     {
-        [FormerlySerializedAs("chipData")] [SerializeField] private Chip chip;
+        [SerializeField] private Chip chip;
         [SerializeField] private ChipSelectionEventChannel chipSelectionEventChannel;
         [SerializeField] private GameStateChangeEventChannel gameStateChangeEventChannel;
         private bool _isPlayable = true;

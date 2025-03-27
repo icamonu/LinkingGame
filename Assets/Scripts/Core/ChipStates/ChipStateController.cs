@@ -1,16 +1,16 @@
 using System.Collections.Generic;
+using Enums;
 using Interfaces;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Core.ChipStates
 {
     public class ChipStateController: MonoBehaviour
     {
-        [FormerlySerializedAs("chipData")] [SerializeField] private Chip chip;
+        [SerializeField] private Chip chip;
         [SerializeField] private Transform spriteTransform;
         
-        private Dictionary<Enums.ChipState, IStateHandler> _stateHandlers = new ();
+        private Dictionary<ChipState, IStateHandler> _stateHandlers = new ();
         
         private void Awake()
         {

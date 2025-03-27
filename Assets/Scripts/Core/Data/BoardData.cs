@@ -5,7 +5,7 @@ namespace Core.Data
 {
     public class BoardData: MonoBehaviour
     {
-        public Dictionary<Vector2Int, Chip> Chips { get; private set; } = new();
+        public Dictionary<Vector2Int, Chip> Chips { get; } = new();
         
         public void SetChip(Vector2Int position, Chip chip)
         {
