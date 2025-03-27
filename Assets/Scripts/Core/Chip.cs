@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 using Enums;
+using UnityEngine;
 
-namespace Core.Data
+namespace Core
 {
-    public class ChipData: MonoBehaviour
+    public class Chip: MonoBehaviour
     {
         public Vector2Int BoardPosition { get; private set; }
         public int ChipType { get; private set; }

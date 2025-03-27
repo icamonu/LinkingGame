@@ -3,12 +3,13 @@ using Core.Data;
 using Enums;
 using Interfaces;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Core
 {
     public class ChipStateController: MonoBehaviour
     {
-        [SerializeField] private ChipData chipData;
+        [FormerlySerializedAs("chipData")] [SerializeField] private Chip chip;
         [SerializeField] private Transform spriteTransform;
         
         private Dictionary<ChipState, IStateHandler> _stateHandlers = new ();
@@ -20,18 +21,18 @@ namespace Core
 
         private void OnEnable()
         {
-            chipData.OnChipStateChanged += OnChipStateChanged;
+            chip.OnChipStateChanged += OnChipStateChanged;
         }
         
         private void OnDisable()
         {
-            chipData.OnChipStateChanged -= OnChipStateChanged;
+            chip.OnChipStateChanged -= OnChipStateChanged;
         }
 
         private void OnChipStateChanged(ChipState chipState)
         {
             if(_stateHandlers[chipState] is ChipMovingStateHandler movingStateHandler)
-                movingStateHandler.SetTargetPosition(chipData.BoardPosition);
+                movingStateHandler.SetTargetPosition(chip.BoardPosition);
             
             _stateHandlers[chipState].Execute();
         }

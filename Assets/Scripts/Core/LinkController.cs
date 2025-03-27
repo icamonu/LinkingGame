@@ -29,7 +29,7 @@ namespace Core
             chipSelectionEventChannel.OnFingerEnter -= OnFingerEnter;
         }
 
-        private void OnFingerDown(ChipData chip)
+        private void OnFingerDown(Chip chip)
         {
             if(linkData.Link.Count!=0)
                 return;
@@ -39,7 +39,7 @@ namespace Core
             _isLinking = true;
         }
 
-        private void OnFingerEnter(ChipData chip)
+        private void OnFingerEnter(Chip chip)
         {
             if (!_isLinking)
                 return;

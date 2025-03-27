@@ -5,10 +5,10 @@ namespace Core.Data
 {
     public class LinkData: MonoBehaviour
     {
-        public LinkedList<ChipData> Link { get; private set; } = new();
+        public LinkedList<Chip> Link { get; private set; } = new();
         private int _collectedChipType=-1;
         
-        public void AddChip(ChipData chip)
+        public void AddChip(Chip chip)
         {
             if (Link.Contains(chip))
                 return;
@@ -28,14 +28,14 @@ namespace Core.Data
         
         public void RemoveLastChip()
         {
-            ChipData lastChip = Link.Last.Value;
+            Chip lastChip = Link.Last.Value;
             lastChip.OnRemovedFromLink();
             Link.RemoveLast();
         }
         
         public void ClearLink()
         {
-            foreach (ChipData chip in Link)
+            foreach (Chip chip in Link)
             {
                 chip.OnRemovedFromLink();
             }
@@ -43,7 +43,7 @@ namespace Core.Data
             _collectedChipType = -1;
         }
         
-        public LinkedListNode<ChipData> GetLastChip()
+        public LinkedListNode<Chip> GetLastChip()
         {
             return Link.Last;
         }

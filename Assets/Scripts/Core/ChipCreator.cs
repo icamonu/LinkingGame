@@ -51,11 +51,11 @@ namespace Core
             int chipType = Random.Range(0, levelSettings.chips.Count);
             ChipSO chipSo = levelSettings.chips[chipType];
             Vector3 instantiatePosition = onGameStart ? new Vector3(x, y, 0) : new Vector3(x, y + 20, 0);
-            GameObject chip = Instantiate(levelSettings.chipPrefab, instantiatePosition, Quaternion.identity);
-            ChipData chipData = chip.GetComponent<ChipData>();
-            chipData.Initialize(new Vector2Int(x, y), chipType, chipSo.sprite, 
+            GameObject chipObj = Instantiate(levelSettings.chipPrefab, instantiatePosition, Quaternion.identity);
+            Chip chip = chipObj.GetComponent<Chip>();
+            chip.Initialize(new Vector2Int(x, y), chipType, chipSo.sprite, 
                 levelSettings.width, levelSettings.height);
-            boardData.SetChip(new Vector2Int(x,y), chipData);
+            boardData.SetChip(new Vector2Int(x,y), chip);
         }
     }
 }
