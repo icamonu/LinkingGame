@@ -9,8 +9,10 @@ namespace Core
     {
         [SerializeField] private BoardData boardData;
         [SerializeField] private ChipCollectionEventChannel chipCollectionEventChannel;
+        [SerializeField] private BoardFillEventChannel boardFillEventChannel;
         
         private List<ChipData> _remainingChipsOnColumn = new ();
+        private List<Vector2Int> _emptyPositions = new ();
         private void OnEnable()
         {
             chipCollectionEventChannel.OnChipCollectionCompleted += OnChipCollectionCompleted;
@@ -24,10 +26,12 @@ namespace Core
         private void OnChipCollectionCompleted()
         {
             RearrangeBoard();
+            boardFillEventChannel.RaiseBoardFillOrderEvent(_emptyPositions);
         }
 
         private void RearrangeBoard()
         {
+            _emptyPositions.Clear();
             Vector2Int currentColumn = new Vector2Int(0, 0);
 
             while (boardData.Chips.ContainsKey(currentColumn))
@@ -73,6 +77,7 @@ namespace Core
                 else
                 {
                     boardData.SetChip(currentPosition, null);
+                    _emptyPositions.Add(currentPosition);
                 }
                 
                 currentPosition.y++;
