@@ -1,3 +1,4 @@
+using System;
 using ScriptableObjects;
 using UnityEngine;
 
@@ -21,6 +22,12 @@ namespace GameFlow
         {
             moveCountChangeEventChannel.OnMoveCountChanged -= OnMoveCountChanged;
             scoreCountChangeEventChannel.OnScoreCountChanged -= OnScoreCountChanged;
+        }
+
+        private void Start()
+        {
+            moveCountChangeEventChannel.RaiseMoveCountChangedEvent(0);
+            scoreCountChangeEventChannel.RaiseScoreCountChangedEvent(0);
         }
 
         private void OnScoreCountChanged(int score)
