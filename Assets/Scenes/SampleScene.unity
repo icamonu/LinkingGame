@@ -466,6 +466,82 @@ MonoBehaviour:
   levelSettings: {fileID: 11400000, guid: 725f8814ef9ae45669dd8bf575e2315d, type: 2}
   boardData: {fileID: 808347389}
   boardFillEventChannel: {fileID: 11400000, guid: f2bc8c4917ee440c18586d956db889e8, type: 2}
+--- !u!1 &1107775643
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1107775646}
+  - component: {fileID: 1107775645}
+  - component: {fileID: 1107775644}
+  - component: {fileID: 1107775647}
+  m_Layer: 0
+  m_Name: GameFlow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1107775644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107775643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c298a235c844ac99be319f34050d690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chipCollectionEventChannel: {fileID: 11400000, guid: a08bd76cf8a5740cbb24c9d3da9ec246, type: 2}
+  moveCountChangeEventChannel: {fileID: 11400000, guid: cc9bc845b786742c3bf438c6e7722f7f, type: 2}
+--- !u!114 &1107775645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107775643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: addfaace64cb4df8aa792f5bf3152657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chipCollectionEventChannel: {fileID: 11400000, guid: a08bd76cf8a5740cbb24c9d3da9ec246, type: 2}
+--- !u!4 &1107775646
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107775643}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1107775647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107775643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01d4c873239a42288bf4557a81409c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelSettings: {fileID: 11400000, guid: 725f8814ef9ae45669dd8bf575e2315d, type: 2}
+  moveCountChangeEventChannel: {fileID: 11400000, guid: cc9bc845b786742c3bf438c6e7722f7f, type: 2}
+  scoreCountChangeEventChannel: {fileID: 11400000, guid: 6be81ac19a849492293ba6fcea9ce59a, type: 2}
 --- !u!1 &1303200620
 GameObject:
   m_ObjectHideFlags: 0
