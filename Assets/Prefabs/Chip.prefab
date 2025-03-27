@@ -88,6 +88,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chipData: {fileID: 8123901302666359271}
   chipSelectionEventChannel: {fileID: 11400000, guid: c6b5c4f9c3a174ff487616d8ea483726, type: 2}
+  gameStateChangeEventChannel: {fileID: 11400000, guid: 234094fbf067c422987d716d0ec911f6, type: 2}
 --- !u!1 &4382393755937684803
 GameObject:
   m_ObjectHideFlags: 0

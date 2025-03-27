@@ -1,4 +1,3 @@
-using System;
 using ScriptableObjects;
 using UnityEngine;
 
@@ -9,6 +8,7 @@ namespace GameFlow
         [SerializeField] private LevelSettings levelSettings;
         [SerializeField] private MoveCountChangeEventChannel moveCountChangeEventChannel;
         [SerializeField] private ScoreCountChangeEventChannel scoreCountChangeEventChannel;
+        [SerializeField] private GameStateChangeEventChannel gameStateChangeEventChannel;
         
         private int _score;
         
@@ -24,6 +24,7 @@ namespace GameFlow
             scoreCountChangeEventChannel.OnScoreCountChanged -= OnScoreCountChanged;
         }
 
+        //This is not a good place to keep them, but for now, it is okay.
         private void Start()
         {
             moveCountChangeEventChannel.RaiseMoveCountChangedEvent(0);
@@ -43,7 +44,7 @@ namespace GameFlow
             if(_score>=levelSettings.targetScore)
                 return;
                 
-            Debug.Log("Game Over");
+            gameStateChangeEventChannel.RaiseGameStateChangedEvent(GameState.Fail);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace ScriptableObjects
     {
         public event Action<ChipData> OnFingerDown; 
         public event Action<ChipData> OnFingerEnter;
-        public event Action OnTouchEnded; 
+        public event Action OnTouchEnded;
         
         public void RaiseFingerDownEvent(ChipData chipData)
         {

@@ -1,0 +1,17 @@
+using System;
+using GameFlow;
+using UnityEngine;
+
+namespace ScriptableObjects
+{
+    [CreateAssetMenu(fileName = "GameStateChangeEventChannel", menuName = "ScriptableObjects/GameStateChangeEventChannel")]
+    public class GameStateChangeEventChannel: ScriptableObject
+    {
+        public event Action<GameState> OnGameStateChanged;
+        
+        public void RaiseGameStateChangedEvent(GameState gameState)
+        {
+            OnGameStateChanged?.Invoke(gameState);
+        }
+    }
+}

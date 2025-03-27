@@ -1,6 +1,6 @@
-using System;
 using System.Collections.Generic;
 using Core.Data;
+using GameFlow;
 using ScriptableObjects;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -12,6 +12,7 @@ namespace Core
         [SerializeField] private LevelSettings levelSettings;
         [SerializeField] private BoardData boardData;
         [SerializeField] private BoardFillEventChannel boardFillEventChannel;
+        [SerializeField] private GameStateChangeEventChannel gameStateChangeEventChannel;
 
         private void OnEnable()
         {
@@ -41,6 +42,8 @@ namespace Core
                     CreateChip(x, y, true);
                 }
             }
+            
+            gameStateChangeEventChannel.RaiseGameStateChangedEvent(GameState.GameStarted);
         }
 
         private void CreateChip(int x, int y, bool onGameStart = false)
