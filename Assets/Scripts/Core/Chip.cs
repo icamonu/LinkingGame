@@ -53,7 +53,6 @@ namespace Core
         private void FindNeighbours()
         {
             Neighbours.Clear();
-            
             if(BoardPosition.x > 0)
                 Neighbours.Add(new Vector2Int(BoardPosition.x - 1, BoardPosition.y));
             if(BoardPosition.x < _boardWidth - 1)

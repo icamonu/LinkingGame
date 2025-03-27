@@ -1,8 +1,8 @@
-using Interfaces;
 using DG.Tweening;
+using Interfaces;
 using UnityEngine;
 
-namespace Core
+namespace Core.ChipStates
 {
     public class ChipMovingStateHandler: IStateHandler
     {

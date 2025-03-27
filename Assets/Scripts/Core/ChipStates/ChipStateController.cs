@@ -1,18 +1,16 @@
 using System.Collections.Generic;
-using Core.Data;
-using Enums;
 using Interfaces;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Core
+namespace Core.ChipStates
 {
     public class ChipStateController: MonoBehaviour
     {
         [FormerlySerializedAs("chipData")] [SerializeField] private Chip chip;
         [SerializeField] private Transform spriteTransform;
         
-        private Dictionary<ChipState, IStateHandler> _stateHandlers = new ();
+        private Dictionary<Enums.ChipState, IStateHandler> _stateHandlers = new ();
         
         private void Awake()
         {
@@ -29,7 +27,7 @@ namespace Core
             chip.OnChipStateChanged -= OnChipStateChanged;
         }
 
-        private void OnChipStateChanged(ChipState chipState)
+        private void OnChipStateChanged(Enums.ChipState chipState)
         {
             if(_stateHandlers[chipState] is ChipMovingStateHandler movingStateHandler)
                 movingStateHandler.SetTargetPosition(chip.BoardPosition);
@@ -39,10 +37,10 @@ namespace Core
         
         private void BuildStateHandlerDictionary()
         {
-            _stateHandlers.Add(ChipState.Idle, new ChipIdleStateHandler(spriteTransform));
-            _stateHandlers.Add(ChipState.Selected, new ChipSelectedStateHandler(spriteTransform));
-            _stateHandlers.Add(ChipState.Moving, new ChipMovingStateHandler(transform));
-            _stateHandlers.Add(ChipState.Collected, new ChipCollectedStateHandler(spriteTransform));
+            _stateHandlers.Add(Enums.ChipState.Idle, new ChipIdleStateHandler(spriteTransform));
+            _stateHandlers.Add(Enums.ChipState.Selected, new ChipSelectedStateHandler(spriteTransform));
+            _stateHandlers.Add(Enums.ChipState.Moving, new ChipMovingStateHandler(transform));
+            _stateHandlers.Add(Enums.ChipState.Collected, new ChipCollectedStateHandler(spriteTransform));
         }
     }
 }

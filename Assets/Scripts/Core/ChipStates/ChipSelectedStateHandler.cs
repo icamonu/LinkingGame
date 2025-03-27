@@ -1,8 +1,8 @@
+using DG.Tweening;
 using Interfaces;
 using UnityEngine;
-using DG.Tweening;
 
-namespace Core
+namespace Core.ChipStates
 {
     public class ChipSelectedStateHandler: IStateHandler
     {
@@ -15,7 +15,7 @@ namespace Core
         
         public void Execute()
         {
-            _transform.DOScale(1.5f, 0.1f);
+            _transform.DOScale(1.2f, 0.1f);
         }
     }
 }
