@@ -6,7 +6,7 @@ namespace Core
 {
     public class BoardCreator: MonoBehaviour
     {
-        [SerializeField] private LevelSettings _levelSettings;
+        [SerializeField] private LevelSettings levelSettings;
         private void Start()
         {
             CreateBoard();
@@ -14,11 +14,11 @@ namespace Core
         
         private void CreateBoard()
         {
-            for (int y = 0; y < _levelSettings.height; y++)
+            for (int y = 0; y < levelSettings.height; y++)
             {
-                for (int x = 0; x < _levelSettings.height; x++)
+                for (int x = 0; x < levelSettings.height; x++)
                 {
-                    GameObject tile = Instantiate(_levelSettings.tilePrefab, new Vector3(x, y, 0), Quaternion.identity); 
+                    GameObject tile = Instantiate(levelSettings.tilePrefab, new Vector3(x, y, 0), Quaternion.identity); 
                 }
             }
         }

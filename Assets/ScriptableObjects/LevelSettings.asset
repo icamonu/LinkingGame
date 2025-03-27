@@ -19,7 +19,5 @@ MonoBehaviour:
   chips:
   - {fileID: 11400000, guid: 58d49aaad682f4e7e8646ffe40d378de, type: 2}
   - {fileID: 11400000, guid: b6096e7fdd0b6429d8cf1bc847039835, type: 2}
-  - {fileID: 11400000, guid: 36daad94b5ed148309f724ac75ef5848, type: 2}
-  - {fileID: 11400000, guid: c99764e4f69ee4ecd9eea63b82b51999, type: 2}
   chipPrefab: {fileID: 4382393755416007356, guid: d67d2049284394358bdbf2ea176eb1ea, type: 3}
   tilePrefab: {fileID: 948966654383774, guid: 11435cc4faaba461181e42fb986b51cf, type: 3}

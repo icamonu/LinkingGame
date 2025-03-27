@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using ScriptableObjects;
 using UnityEngine;
+using DG.Tweening;
 
 namespace Core.Data
 {
@@ -13,14 +13,14 @@ namespace Core.Data
         private int _boardWidth;
         private int _boardHeight;
         
-        [SerializeField] private SpriteRenderer _spriteRenderer;
+        [SerializeField] private SpriteRenderer spriteRenderer;
         
         public void Initialize(Vector2Int boardPosition, int chipType, Sprite sprite,
             int boardWidth, int boardHeight)
         {
             _boardWidth = boardWidth;
             _boardHeight = boardHeight;
-            _spriteRenderer.sprite = sprite;
+            spriteRenderer.sprite = sprite;
             ChipType = chipType;
             SetBoardPosition(boardPosition);
         }
@@ -29,6 +29,7 @@ namespace Core.Data
         {
             BoardPosition = boardPosition;
             FindNeighbours();
+            transform.DOMove(new Vector3(BoardPosition.x, BoardPosition.y, 0), 0.2f);
         }
 
         private void FindNeighbours()

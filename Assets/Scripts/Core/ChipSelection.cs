@@ -6,16 +6,16 @@ namespace Core
 {
     public class ChipSelection : MonoBehaviour
     {
-        [SerializeField] private ChipData _chipData;
-        [SerializeField] private ChipSelectionEventChannel _chipSelectionEventChannel;
+        [SerializeField] private ChipData chipData;
+        [SerializeField] private ChipSelectionEventChannel chipSelectionEventChannel;
         private void OnMouseDown()
         {
-            _chipSelectionEventChannel.RaiseFingerDownEvent(_chipData);
+            chipSelectionEventChannel.RaiseFingerDownEvent(chipData);
         }
 
         private void OnMouseEnter()
         {
-            _chipSelectionEventChannel.RaiseFingerEnterEvent(_chipData);
+            chipSelectionEventChannel.RaiseFingerEnterEvent(chipData);
         }
     }
 }

@@ -7,35 +7,35 @@ namespace Core
 {
     public class LinkController: MonoBehaviour
     {
-        [SerializeField] private LinkData _linkData;
-        [SerializeField] private TouchController _touchController;
-        [SerializeField] private ChipSelectionEventChannel _chipSelectionEventChannel;
-        [SerializeField] private ChipCollectionEventChannel _chipCollectionEventChannel;
+        [SerializeField] private LinkData linkData;
+        [SerializeField] private TouchController touchController;
+        [SerializeField] private ChipSelectionEventChannel chipSelectionEventChannel;
+        [SerializeField] private ChipCollectionEventChannel chipCollectionEventChannel;
         
         private bool _isLinking = false;
-        private List<Vector2Int> _collectedChipPositions = new List<Vector2Int>();
+        private List<Vector2Int> _collectedChipPositions = new ();
         
         private void OnEnable()
         {
-            _chipSelectionEventChannel.OnTouchEnded += OnTouchEnded;
-            _chipSelectionEventChannel.OnFingerDown += OnFingerDown;
-            _chipSelectionEventChannel.OnFingerEnter += OnFingerEnter;
+            chipSelectionEventChannel.OnTouchEnded += OnTouchEnded;
+            chipSelectionEventChannel.OnFingerDown += OnFingerDown;
+            chipSelectionEventChannel.OnFingerEnter += OnFingerEnter;
         }
         
         private void OnDisable()
         {
-            _chipSelectionEventChannel.OnTouchEnded -= OnTouchEnded;
-            _chipSelectionEventChannel.OnFingerDown -= OnFingerDown;
-            _chipSelectionEventChannel.OnFingerEnter -= OnFingerEnter;
+            chipSelectionEventChannel.OnTouchEnded -= OnTouchEnded;
+            chipSelectionEventChannel.OnFingerDown -= OnFingerDown;
+            chipSelectionEventChannel.OnFingerEnter -= OnFingerEnter;
         }
 
         private void OnFingerDown(ChipData chip)
         {
-            if(_linkData.Link.Count!=0)
+            if(linkData.Link.Count!=0)
                 return;
             
+            linkData.AddChip(chip);
             _collectedChipPositions.Clear();
-            _linkData.AddChip(chip);
             _isLinking = true;
         }
 
@@ -44,25 +44,25 @@ namespace Core
             if (!_isLinking)
                 return;
             
-            if(_linkData.GetLastChip().Previous?.Value.BoardPosition == chip.BoardPosition)
+            if(linkData.GetLastChip().Previous?.Value.BoardPosition == chip.BoardPosition)
             {
-                _linkData.RemoveLastChip();
+                linkData.RemoveLastChip();
                 return;
             }
-            _linkData.AddChip(chip);
+            linkData.AddChip(chip);
         }
 
         private void OnTouchEnded()
         {
-            if (_linkData.Link.Count >= 3)
+            if (linkData.Link.Count >= 3)
             {
-                foreach (var chip in _linkData.Link)
+                foreach (var chip in linkData.Link)
                 {
                     _collectedChipPositions.Add(chip.BoardPosition);
                 }
             }
-            _chipCollectionEventChannel.RaiseChipCollectionEvent(_collectedChipPositions);
-            _linkData.ClearLink();
+            chipCollectionEventChannel.RaiseChipCollectionEvent(_collectedChipPositions);
+            linkData.ClearLink();
             _isLinking = false;
         }
     }

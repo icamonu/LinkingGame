@@ -73,7 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a19168de7f74c418bb3e7d068e10f0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 4382393755937684805}
+  spriteRenderer: {fileID: 4382393755937684805}
 --- !u!114 &8080587051976049120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,8 +86,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f13a733a7741497fbe81bcd40bfbb4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chipData: {fileID: 8123901302666359271}
-  _chipSelectionEventChannel: {fileID: 11400000, guid: c6b5c4f9c3a174ff487616d8ea483726, type: 2}
+  chipData: {fileID: 8123901302666359271}
+  chipSelectionEventChannel: {fileID: 11400000, guid: c6b5c4f9c3a174ff487616d8ea483726, type: 2}
 --- !u!1 &4382393755937684803
 GameObject:
   m_ObjectHideFlags: 0

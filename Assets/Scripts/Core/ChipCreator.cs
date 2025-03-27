@@ -6,8 +6,8 @@ namespace Core
 {
     public class ChipCreator: MonoBehaviour
     {
-        [SerializeField] private LevelSettings _levelSettings;
-        [SerializeField] private BoardData _boardData;
+        [SerializeField] private LevelSettings levelSettings;
+        [SerializeField] private BoardData boardData;
         
         private void Start()
         {
@@ -16,17 +16,17 @@ namespace Core
         
         private void CreateChips()
         {
-            for (int y = 0; y < _levelSettings.height; y++)
+            for (int y = 0; y < levelSettings.height; y++)
             {
-                for (int x = 0; x < _levelSettings.height; x++)
+                for (int x = 0; x < levelSettings.height; x++)
                 {
-                    int chipType = Random.Range(0, _levelSettings.chips.Count);
-                    ChipSO chipSO = _levelSettings.chips[chipType];
-                    GameObject chip = Instantiate(_levelSettings.chipPrefab, new Vector3(x, y, 0), Quaternion.identity);
+                    int chipType = Random.Range(0, levelSettings.chips.Count);
+                    ChipSO chipSo = levelSettings.chips[chipType];
+                    GameObject chip = Instantiate(levelSettings.chipPrefab, new Vector3(x, y, 0), Quaternion.identity);
                     ChipData chipData = chip.GetComponent<ChipData>();
-                    chipData.Initialize(new Vector2Int(x, y), chipType, chipSO.sprite, 
-                        _levelSettings.width, _levelSettings.height);
-                    _boardData.AddChip(new Vector2Int(x,y), chipData);
+                    chipData.Initialize(new Vector2Int(x, y), chipType, chipSo.sprite, 
+                        levelSettings.width, levelSettings.height);
+                    boardData.AddChip(new Vector2Int(x,y), chipData);
                 }
             }
         }

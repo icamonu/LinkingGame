@@ -123,6 +123,52 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &667628694
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 667628695}
+  - component: {fileID: 667628696}
+  m_Layer: 0
+  m_Name: ColumnSorter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &667628695
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667628694}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1303200621}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &667628696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667628694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c40ae2c2c3814c95a7d085260705c518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boardData: {fileID: 808347389}
+  chipCollectionEventChannel: {fileID: 11400000, guid: a08bd76cf8a5740cbb24c9d3da9ec246, type: 2}
 --- !u!1 &780105918
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,10 +213,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 014a32010b8c4b38abcbad9a2f134a39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _linkData: {fileID: 808347391}
-  _touchController: {fileID: 1420133719}
-  _chipSelectionEventChannel: {fileID: 11400000, guid: c6b5c4f9c3a174ff487616d8ea483726, type: 2}
-  _chipCollectionEventChannel: {fileID: 11400000, guid: a08bd76cf8a5740cbb24c9d3da9ec246, type: 2}
+  linkData: {fileID: 808347391}
+  touchController: {fileID: 1420133719}
+  chipSelectionEventChannel: {fileID: 11400000, guid: c6b5c4f9c3a174ff487616d8ea483726, type: 2}
+  chipCollectionEventChannel: {fileID: 11400000, guid: a08bd76cf8a5740cbb24c9d3da9ec246, type: 2}
 --- !u!1 &808347388
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,7 +402,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82dfb8fe05e94dce8ef47f757a896321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chipCollectionEventChannel: {fileID: 11400000, guid: a08bd76cf8a5740cbb24c9d3da9ec246, type: 2}
+  boardData: {fileID: 808347389}
+  chipCollectionEventChannel: {fileID: 11400000, guid: a08bd76cf8a5740cbb24c9d3da9ec246, type: 2}
 --- !u!1 &1100949434
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,7 +449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82670aea1c714692a0eee71aff83627d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelSettings: {fileID: 11400000, guid: 725f8814ef9ae45669dd8bf575e2315d, type: 2}
+  levelSettings: {fileID: 11400000, guid: 725f8814ef9ae45669dd8bf575e2315d, type: 2}
 --- !u!114 &1100949437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,8 +462,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5ed97a47ae246d48c8ee239d39ee23e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelSettings: {fileID: 11400000, guid: 725f8814ef9ae45669dd8bf575e2315d, type: 2}
-  _boardData: {fileID: 808347389}
+  levelSettings: {fileID: 11400000, guid: 725f8814ef9ae45669dd8bf575e2315d, type: 2}
+  boardData: {fileID: 808347389}
 --- !u!1 &1303200620
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,6 +496,7 @@ Transform:
   - {fileID: 1420133718}
   - {fileID: 780105919}
   - {fileID: 1041935617}
+  - {fileID: 667628695}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
