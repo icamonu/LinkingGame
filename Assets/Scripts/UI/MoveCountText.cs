@@ -7,6 +7,7 @@ namespace UI
     public class MoveCountText: MonoBehaviour
     {
         [SerializeField] private MoveCountChangeEventChannel moveCountChangeEventChannel;
+        [SerializeField] private LevelSettings levelSettings;
         [SerializeField] private TMP_Text moveCountText;
         
         private void OnEnable()
@@ -21,7 +22,8 @@ namespace UI
 
         private void OnMoveCountChanged(int moveCount)
         {
-            moveCountText.text = moveCount.ToString();
+            int remainingMoves = levelSettings.maxMoves - moveCount;
+            moveCountText.text = remainingMoves.ToString();
         }
     }
 }

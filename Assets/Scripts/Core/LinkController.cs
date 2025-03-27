@@ -60,8 +60,10 @@ namespace Core
                 {
                     _collectedChipPositions.Add(chip.BoardPosition);
                 }
+                
+                chipCollectionEventChannel.RaiseChipCollectionEvent(_collectedChipPositions);
             }
-            chipCollectionEventChannel.RaiseChipCollectionEvent(_collectedChipPositions);
+            
             linkData.ClearLink();
             _isLinking = false;
         }

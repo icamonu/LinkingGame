@@ -430,6 +430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveCountChangeEventChannel: {fileID: 11400000, guid: cc9bc845b786742c3bf438c6e7722f7f, type: 2}
+  levelSettings: {fileID: 11400000, guid: 725f8814ef9ae45669dd8bf575e2315d, type: 2}
   moveCountText: {fileID: 244736178}
 --- !u!114 &263765011
 MonoBehaviour:
