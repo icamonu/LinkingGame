@@ -1,7 +1,7 @@
 using ScriptableObjects;
 using UnityEngine;
 
-namespace UI
+namespace Helpers
 {
     public class CameraArranger: MonoBehaviour
     {

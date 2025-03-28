@@ -1,6 +1,8 @@
+using ScriptableObjects;
 using ScriptableObjects.EventChannel;
 using UnityEngine;
 using TMPro;
+using System.Text;
 
 namespace UI
 {
@@ -8,6 +10,9 @@ namespace UI
     {
         [SerializeField] private ScoreCountChangeEventChannel scoreCountChangeEventChannel;
         [SerializeField] private TMP_Text scoreCountText;
+        [SerializeField] private LevelSettings levelSettings;
+
+        private StringBuilder _stringBuilder = new StringBuilder();
         
         private void OnEnable()
         {
@@ -21,7 +26,11 @@ namespace UI
 
         private void OnScoreCountChanged(int score)
         {
-            scoreCountText.text = score.ToString();
+            _stringBuilder.Clear();
+            _stringBuilder.Append(score);
+            _stringBuilder.Append("/");
+            _stringBuilder.Append(levelSettings.targetScore);
+            scoreCountText.text = _stringBuilder.ToString();
         }
     }
 }
