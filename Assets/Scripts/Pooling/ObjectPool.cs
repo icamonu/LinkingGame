@@ -7,12 +7,12 @@ namespace Pooling
     {
         protected Queue<T> pool = new Queue<T>();
         
-        public virtual T Get()
+        protected virtual T Get()
         {
             return pool.Dequeue();
         }
         
-        public virtual void ReturnToPool(T objectToReturn)
+        protected virtual void ReturnToPool(T objectToReturn)
         {
             pool.Enqueue(objectToReturn);
         }

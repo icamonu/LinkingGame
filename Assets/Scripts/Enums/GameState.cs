@@ -2,6 +2,6 @@ namespace Enums
 {
     public enum GameState
     {
-        Loading, GameStarted, Success, Fail
+        GameStarted, Success, Fail
     }
 }

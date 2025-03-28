@@ -27,7 +27,7 @@ namespace Core.ChipStates
             chip.OnChipStateChanged -= OnChipStateChanged;
         }
 
-        private void OnChipStateChanged(Enums.ChipState chipState)
+        private void OnChipStateChanged(ChipState chipState)
         {
             if(_stateHandlers[chipState] is ChipMovingStateHandler movingStateHandler)
                 movingStateHandler.SetTargetPosition(chip.BoardPosition);
@@ -37,10 +37,10 @@ namespace Core.ChipStates
         
         private void BuildStateHandlerDictionary()
         {
-            _stateHandlers.Add(Enums.ChipState.Idle, new ChipIdleStateHandler(spriteTransform));
-            _stateHandlers.Add(Enums.ChipState.Selected, new ChipSelectedStateHandler(spriteTransform));
-            _stateHandlers.Add(Enums.ChipState.Moving, new ChipMovingStateHandler(transform));
-            _stateHandlers.Add(Enums.ChipState.Collected, new ChipCollectedStateHandler(transform, spriteTransform));
+            _stateHandlers.Add(ChipState.Idle, new ChipIdleStateHandler(spriteTransform));
+            _stateHandlers.Add(ChipState.Selected, new ChipSelectedStateHandler(spriteTransform));
+            _stateHandlers.Add(ChipState.Moving, new ChipMovingStateHandler(transform));
+            _stateHandlers.Add(ChipState.Collected, new ChipCollectedStateHandler(transform, spriteTransform));
         }
     }
 }
