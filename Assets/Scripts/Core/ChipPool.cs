@@ -15,7 +15,7 @@ namespace Core
         [SerializeField] private ChipCreator chipCreator;
         [SerializeField] private BoardFillEventChannel boardFillEventChannel;
         [SerializeField] private GameStateChangeEventChannel gameStateChangeEventChannel;
-        [SerializeField] private ChipCollectionEventChannel chipCollectionEventChannel;
+        [SerializeField] private ChipPoolEventChannel chipPoolEventChannel;
         [SerializeField] private LevelSettings levelSettings;
 
         private void Start()
@@ -26,26 +26,13 @@ namespace Core
         private void OnEnable()
         {
             boardFillEventChannel.OnBoardFillOrder += OnBoardFillOrder;
-            chipCollectionEventChannel.OnChipCollection += OnChipCollection;
+            chipPoolEventChannel.OnChipDisabled += ReturnToPool;
         }
 
         private void OnDisable()
         {
             boardFillEventChannel.OnBoardFillOrder -= OnBoardFillOrder;
-            chipCollectionEventChannel.OnChipCollection -= OnChipCollection;
-        }
-
-        private async void OnChipCollection(List<Vector2Int> returnedChipPositions)
-        {
-            List<Chip> returnedChips = new List<Chip>();
-            
-            foreach (Vector2Int chipPosition in returnedChipPositions)
-                returnedChips.Add(boardData.Chips[chipPosition]);
-            
-            await Task.Delay(200);
-            
-            foreach (Chip chip in returnedChips)
-                ReturnToPool(chip);
+            chipPoolEventChannel.OnChipDisabled -= ReturnToPool;
         }
 
         private void OnBoardFillOrder(List<Vector2Int> emptyPositions)

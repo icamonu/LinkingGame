@@ -1,3 +1,4 @@
+using System;
 using ScriptableObjects.EventChannel;
 using UnityEngine;
 
@@ -18,7 +19,12 @@ namespace GameFlow
         {
             chipCollectionEventChannel.OnChipCollectionCompleted -= OnChipCollection;
         }
-        
+
+        private void Start()
+        {
+            moveCountChangeEventChannel.RaiseMoveCountChangedEvent(0);
+        }
+
         private void OnChipCollection()
         {
             Moves++;

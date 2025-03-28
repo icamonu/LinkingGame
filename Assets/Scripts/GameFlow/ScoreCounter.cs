@@ -19,6 +19,11 @@ namespace GameFlow
         {
             chipCollectionEventChannel.OnChipCollection -= OnChipCollection;
         }
+        
+        private void Start()
+        {
+            scoreCountChangeEventChannel.RaiseScoreCountChangedEvent(0);
+        }
 
         private void OnChipCollection(List<Vector2Int> collectedChips)
         {

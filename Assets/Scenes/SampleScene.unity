@@ -1171,8 +1171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1b2501bd9314eb3a086f9935936fdd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  failPanel: {fileID: 1506319792}
-  successPanel: {fileID: 545096737}
+  failPanel: {fileID: 1506319793}
+  successPanel: {fileID: 545096738}
   gameStateChangeEventChannel: {fileID: 11400000, guid: 234094fbf067c422987d716d0ec911f6, type: 2}
 --- !u!1 &936443188
 GameObject:
@@ -1184,8 +1184,9 @@ GameObject:
   m_Component:
   - component: {fileID: 936443189}
   - component: {fileID: 936443190}
+  - component: {fileID: 936443191}
   m_Layer: 0
-  m_Name: FailAndWinCheckers
+  m_Name: FailAndSuccessCheckers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1220,6 +1221,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelSettings: {fileID: 11400000, guid: 725f8814ef9ae45669dd8bf575e2315d, type: 2}
   moveCountChangeEventChannel: {fileID: 11400000, guid: cc9bc845b786742c3bf438c6e7722f7f, type: 2}
+  scoreCountChangeEventChannel: {fileID: 11400000, guid: 6be81ac19a849492293ba6fcea9ce59a, type: 2}
+  gameStateChangeEventChannel: {fileID: 11400000, guid: 234094fbf067c422987d716d0ec911f6, type: 2}
+--- !u!114 &936443191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936443188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95405bdb313d4ac29b71a7ebaddc7308, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelSettings: {fileID: 11400000, guid: 725f8814ef9ae45669dd8bf575e2315d, type: 2}
   scoreCountChangeEventChannel: {fileID: 11400000, guid: 6be81ac19a849492293ba6fcea9ce59a, type: 2}
   gameStateChangeEventChannel: {fileID: 11400000, guid: 234094fbf067c422987d716d0ec911f6, type: 2}
 --- !u!1 &963194225
@@ -1626,7 +1642,7 @@ MonoBehaviour:
   chipCreator: {fileID: 1100949437}
   boardFillEventChannel: {fileID: 11400000, guid: f2bc8c4917ee440c18586d956db889e8, type: 2}
   gameStateChangeEventChannel: {fileID: 11400000, guid: 234094fbf067c422987d716d0ec911f6, type: 2}
-  chipCollectionEventChannel: {fileID: 11400000, guid: a08bd76cf8a5740cbb24c9d3da9ec246, type: 2}
+  chipPoolEventChannel: {fileID: 11400000, guid: 300a0f4ad176540bab97d6266113d419, type: 2}
   levelSettings: {fileID: 11400000, guid: 725f8814ef9ae45669dd8bf575e2315d, type: 2}
 --- !u!1 &1107775643
 GameObject:
