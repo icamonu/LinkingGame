@@ -1,24 +1,24 @@
 using System;
-using Core.Data;
+using Core;
 using UnityEngine;
 
-namespace ScriptableObjects
+namespace ScriptableObjects.EventChannel
 {
     [CreateAssetMenu(fileName = "ChipSelectionEventChannel", menuName = "ScriptableObjects/ChipSelectionEventChannel")]
     public class ChipSelectionEventChannel: ScriptableObject
     {
-        public event Action<ChipData> OnFingerDown; 
-        public event Action<ChipData> OnFingerEnter;
+        public event Action<Chip> OnFingerDown; 
+        public event Action<Chip> OnFingerEnter;
         public event Action OnTouchEnded;
         
-        public void RaiseFingerDownEvent(ChipData chipData)
+        public void RaiseFingerDownEvent(Chip chip)
         {
-            OnFingerDown?.Invoke(chipData);
+            OnFingerDown?.Invoke(chip);
         }
         
-        public void RaiseFingerEnterEvent(ChipData chipData)
+        public void RaiseFingerEnterEvent(Chip chip)
         {
-            OnFingerEnter?.Invoke(chipData);
+            OnFingerEnter?.Invoke(chip);
         }
         
         public void RaiseTouchEndedEvent()

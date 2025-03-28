@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Core.Data;
-using ScriptableObjects;
+using ScriptableObjects.EventChannel;
 using UnityEngine;
 
 namespace Core
@@ -29,7 +29,7 @@ namespace Core
             chipSelectionEventChannel.OnFingerEnter -= OnFingerEnter;
         }
 
-        private void OnFingerDown(ChipData chip)
+        private void OnFingerDown(Chip chip)
         {
             if(linkData.Link.Count!=0)
                 return;
@@ -39,7 +39,7 @@ namespace Core
             _isLinking = true;
         }
 
-        private void OnFingerEnter(ChipData chip)
+        private void OnFingerEnter(Chip chip)
         {
             if (!_isLinking)
                 return;
@@ -60,8 +60,10 @@ namespace Core
                 {
                     _collectedChipPositions.Add(chip.BoardPosition);
                 }
+                
+                chipCollectionEventChannel.RaiseChipCollectionEvent(_collectedChipPositions);
             }
-            chipCollectionEventChannel.RaiseChipCollectionEvent(_collectedChipPositions);
+            
             linkData.ClearLink();
             _isLinking = false;
         }

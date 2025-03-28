@@ -1,15 +1,25 @@
-using GameFlow;
-using ScriptableObjects;
+using System.Collections.Generic;
+using Enums;
+using Interfaces;
+using ScriptableObjects.EventChannel;
+using UI.LevelEndStates;
 using UnityEngine;
 
 namespace UI
 {
     public class UILevelEndController: MonoBehaviour
     {
-        [SerializeField] private GameObject failPanel;
-        [SerializeField] private GameObject successPanel;
+        [SerializeField] private RectTransform failPanel;
+        [SerializeField] private RectTransform successPanel;
         [SerializeField] private GameStateChangeEventChannel gameStateChangeEventChannel;
         
+        private Dictionary<GameState, IStateHandler> _stateHandlers = new ();
+
+        private void Awake()
+        {
+            BuildStateHandlerDictionary();
+        }
+
         private void OnEnable()
         {
             gameStateChangeEventChannel.OnGameStateChanged += OnGameStateChanged;
@@ -22,18 +32,14 @@ namespace UI
 
         private void OnGameStateChanged(GameState gameState)
         {
-            ShowFailPanel(gameState==GameState.Fail);
-            ShowSuccessPanel(gameState==GameState.Success);
+            _stateHandlers.TryGetValue(gameState, out IStateHandler stateHandler);
+            stateHandler?.Execute();
         }
         
-        private void ShowFailPanel(bool isFail)
+        private void BuildStateHandlerDictionary()
         {
-            failPanel.SetActive(isFail);
-        }
-        
-        private void ShowSuccessPanel(bool isSuccess)
-        {
-            successPanel.SetActive(isSuccess);
+            _stateHandlers.Add(GameState.Fail, new FailStateHandler(failPanel));
+            _stateHandlers.Add(GameState.Success, new SuccessStateHandler(successPanel));
         }
     }
 }

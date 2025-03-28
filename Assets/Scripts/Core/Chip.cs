@@ -1,14 +1,16 @@
+using System;
 using System.Collections.Generic;
+using Enums;
 using UnityEngine;
-using DG.Tweening;
 
-namespace Core.Data
+namespace Core
 {
-    public class ChipData: MonoBehaviour
+    public class Chip: MonoBehaviour
     {
         public Vector2Int BoardPosition { get; private set; }
         public int ChipType { get; private set; }
-        public HashSet<Vector2Int> Neighbours { get; private set; } = new ();
+        public List<Vector2Int> Neighbours { get; } = new ();
+        public Action<ChipState> OnChipStateChanged;
         
         private int _boardWidth;
         private int _boardHeight;
@@ -16,26 +18,41 @@ namespace Core.Data
         [SerializeField] private SpriteRenderer spriteRenderer;
         
         public void Initialize(Vector2Int boardPosition, int chipType, Sprite sprite,
-            int boardWidth, int boardHeight)
+            int boardWidth, int boardHeight, bool onGameStart = false)
         {
             _boardWidth = boardWidth;
             _boardHeight = boardHeight;
             spriteRenderer.sprite = sprite;
             ChipType = chipType;
             SetBoardPosition(boardPosition);
+            OnChipStateChanged?.Invoke(ChipState.Moving);
+        }
+        
+        public void OnAddedToLink()
+        {
+            OnChipStateChanged?.Invoke(ChipState.Selected);
+        }
+        
+        public void OnRemovedFromLink()
+        {
+            OnChipStateChanged?.Invoke(ChipState.Idle);
+        }
+        
+        public void OnCollected()
+        {
+            OnChipStateChanged?.Invoke(ChipState.Collected);
         }
 
         public void SetBoardPosition(Vector2Int boardPosition)
         {
             BoardPosition = boardPosition;
             FindNeighbours();
-            transform.DOMove(new Vector3(BoardPosition.x, BoardPosition.y, 0), 0.2f);
+            OnChipStateChanged?.Invoke(ChipState.Moving);
         }
 
         private void FindNeighbours()
         {
             Neighbours.Clear();
-            
             if(BoardPosition.x > 0)
                 Neighbours.Add(new Vector2Int(BoardPosition.x - 1, BoardPosition.y));
             if(BoardPosition.x < _boardWidth - 1)

@@ -1,13 +1,12 @@
-using Core.Data;
-using GameFlow;
-using ScriptableObjects;
+using Enums;
+using ScriptableObjects.EventChannel;
 using UnityEngine;
 
 namespace Core
 {
     public class ChipSelection : MonoBehaviour
     {
-        [SerializeField] private ChipData chipData;
+        [SerializeField] private Chip chip;
         [SerializeField] private ChipSelectionEventChannel chipSelectionEventChannel;
         [SerializeField] private GameStateChangeEventChannel gameStateChangeEventChannel;
         private bool _isPlayable = true;
@@ -32,7 +31,7 @@ namespace Core
             if (!_isPlayable)
                 return;
             
-            chipSelectionEventChannel.RaiseFingerDownEvent(chipData);
+            chipSelectionEventChannel.RaiseFingerDownEvent(chip);
         }
 
         private void OnMouseEnter()
@@ -40,7 +39,7 @@ namespace Core
             if (!_isPlayable)
                 return;
             
-            chipSelectionEventChannel.RaiseFingerEnterEvent(chipData);
+            chipSelectionEventChannel.RaiseFingerEnterEvent(chip);
         }
     }
 }

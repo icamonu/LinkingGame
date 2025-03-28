@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Core.Data;
-using ScriptableObjects;
+using ScriptableObjects.EventChannel;
 using UnityEngine;
 
 namespace Core
@@ -11,7 +11,7 @@ namespace Core
         [SerializeField] private ChipCollectionEventChannel chipCollectionEventChannel;
         [SerializeField] private BoardFillEventChannel boardFillEventChannel;
         
-        private List<ChipData> _remainingChipsOnColumn = new ();
+        private List<Chip> _remainingChipsOnColumn = new ();
         private List<Vector2Int> _emptyPositions = new ();
         private void OnEnable()
         {
