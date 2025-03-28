@@ -9,7 +9,7 @@ namespace Core
     {
         public Vector2Int BoardPosition { get; private set; }
         public int ChipType { get; private set; }
-        public HashSet<Vector2Int> Neighbours { get; } = new ();
+        public List<Vector2Int> Neighbours { get; } = new ();
         public Action<ChipState> OnChipStateChanged;
         
         private int _boardWidth;
@@ -18,14 +18,14 @@ namespace Core
         [SerializeField] private SpriteRenderer spriteRenderer;
         
         public void Initialize(Vector2Int boardPosition, int chipType, Sprite sprite,
-            int boardWidth, int boardHeight)
+            int boardWidth, int boardHeight, bool onGameStart = false)
         {
             _boardWidth = boardWidth;
             _boardHeight = boardHeight;
             spriteRenderer.sprite = sprite;
             ChipType = chipType;
             SetBoardPosition(boardPosition);
-            OnChipStateChanged?.Invoke(ChipState.Idle);
+            OnChipStateChanged?.Invoke(ChipState.Moving);
         }
         
         public void OnAddedToLink()

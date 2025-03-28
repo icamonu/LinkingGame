@@ -1,8 +1,5 @@
-using System.Collections.Generic;
 using Core.Data;
-using Enums;
 using ScriptableObjects;
-using ScriptableObjects.EventChannel;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -12,51 +9,24 @@ namespace Core
     {
         [SerializeField] private LevelSettings levelSettings;
         [SerializeField] private BoardData boardData;
-        [SerializeField] private BoardFillEventChannel boardFillEventChannel;
-        [SerializeField] private GameStateChangeEventChannel gameStateChangeEventChannel;
-
-        private void OnEnable()
-        {
-            boardFillEventChannel.OnBoardFillOrder += OnBoardFillOrder;
-            CreateChips();
-        }
-
-        private void OnDisable()
-        {
-            boardFillEventChannel.OnBoardFillOrder -= OnBoardFillOrder;
-        }
         
-        private void OnBoardFillOrder(List<Vector2Int> emptyPositions)
+        public void CreateChip(int x, int y, bool onGameStart = false)
         {
-            foreach (Vector2Int emptyPosition in emptyPositions)
-            {
-                CreateChip(emptyPosition.x, emptyPosition.y);
-            }
+            GameObject chipObj = Instantiate(levelSettings.chipPrefab);
+            Chip chip = chipObj.GetComponent<Chip>();
+            PrepareChip(chip, new Vector2Int(x, y), onGameStart);
         }
 
-        private void CreateChips()
-        {
-            for (int y = 0; y < levelSettings.height; y++)
-            {
-                for (int x = 0; x < levelSettings.width; x++)
-                {
-                    CreateChip(x, y, true);
-                }
-            }
-            
-            gameStateChangeEventChannel.RaiseGameStateChangedEvent(GameState.GameStarted);
-        }
-
-        private void CreateChip(int x, int y, bool onGameStart = false)
+        public void PrepareChip(Chip chip, Vector2Int boardPosition, bool onGameStart = false)
         {
             int chipType = Random.Range(0, levelSettings.chips.Count);
             ChipSO chipSo = levelSettings.chips[chipType];
+            int x= boardPosition.x;
+            int y= boardPosition.y;
             Vector3 instantiatePosition = onGameStart ? new Vector3(x, y, 0) : new Vector3(x, y + 20, 0);
-            GameObject chipObj = Instantiate(levelSettings.chipPrefab, instantiatePosition, Quaternion.identity);
-            Chip chip = chipObj.GetComponent<Chip>();
-            chip.Initialize(new Vector2Int(x, y), chipType, chipSo.sprite, 
-                levelSettings.width, levelSettings.height);
-            boardData.SetChip(new Vector2Int(x,y), chip);
+            chip.Initialize(boardPosition, chipType, chipSo.sprite, levelSettings.width, levelSettings.height);
+            chip.transform.position = instantiatePosition;
+            boardData.SetChip(boardPosition, chip);
         }
     }
 }

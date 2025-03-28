@@ -6,21 +6,23 @@ namespace Core.ChipStates
 {
     public class ChipCollectedStateHandler: IStateHandler
     {
-        private Transform _transform;
+        private Transform _spriteTransform;
+        private Transform _chipTransform;
         
-        public ChipCollectedStateHandler(Transform transform)
+        public ChipCollectedStateHandler(Transform chipTransform, Transform spriteTransform)
         {
-            _transform = transform;
+            _chipTransform = chipTransform;
+            _spriteTransform = spriteTransform;
         }
         
         public void Execute()
         {
-            _transform.DOScale(0f, 0.1f).OnComplete(Disable);
+            _spriteTransform.DOScale(0f, 0.1f).OnComplete(Disable);
         }
 
         private void Disable()
         {
-            _transform.gameObject.SetActive(false);
+            _chipTransform.gameObject.SetActive(false);
         }
     }
 }

@@ -40,7 +40,7 @@ namespace Core.ChipStates
             _stateHandlers.Add(Enums.ChipState.Idle, new ChipIdleStateHandler(spriteTransform));
             _stateHandlers.Add(Enums.ChipState.Selected, new ChipSelectedStateHandler(spriteTransform));
             _stateHandlers.Add(Enums.ChipState.Moving, new ChipMovingStateHandler(transform));
-            _stateHandlers.Add(Enums.ChipState.Collected, new ChipCollectedStateHandler(spriteTransform));
+            _stateHandlers.Add(Enums.ChipState.Collected, new ChipCollectedStateHandler(transform, spriteTransform));
         }
     }
 }
