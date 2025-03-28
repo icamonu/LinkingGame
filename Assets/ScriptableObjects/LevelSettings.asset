@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1301f27b38cc14a938350fba6050957c, type: 3}
   m_Name: LevelSettings
   m_EditorClassIdentifier: 
-  width: 8
+  width: 10
   height: 8
   targetScore: 10
   maxMoves: 10

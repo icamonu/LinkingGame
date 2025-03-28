@@ -1,9 +1,8 @@
 using System;
 using Core;
-using Core.Data;
 using UnityEngine;
 
-namespace ScriptableObjects
+namespace ScriptableObjects.EventChannel
 {
     [CreateAssetMenu(fileName = "ChipSelectionEventChannel", menuName = "ScriptableObjects/ChipSelectionEventChannel")]
     public class ChipSelectionEventChannel: ScriptableObject

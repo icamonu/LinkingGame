@@ -1,5 +1,5 @@
 using Enums;
-using ScriptableObjects;
+using ScriptableObjects.EventChannel;
 using UnityEngine;
 
 namespace Core

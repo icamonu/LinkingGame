@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace ScriptableObjects
+namespace ScriptableObjects.EventChannel
 {
     [CreateAssetMenu(fileName = "MoveCountChangeEventChannel", menuName = "ScriptableObjects/MoveCountChangeEventChannel")]
     public class MoveCountChangeEventChannel: ScriptableObject

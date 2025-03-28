@@ -9,7 +9,7 @@ namespace Core
     {
         public Vector2Int BoardPosition { get; private set; }
         public int ChipType { get; private set; }
-        public HashSet<Vector2Int> Neighbours { get; private set; } = new ();
+        public HashSet<Vector2Int> Neighbours { get; } = new ();
         public Action<ChipState> OnChipStateChanged;
         
         private int _boardWidth;

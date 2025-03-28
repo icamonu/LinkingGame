@@ -1,4 +1,4 @@
-using ScriptableObjects;
+using ScriptableObjects.EventChannel;
 using UnityEngine;
 using TMPro;
 

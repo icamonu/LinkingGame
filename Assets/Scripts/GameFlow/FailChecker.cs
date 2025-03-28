@@ -1,6 +1,7 @@
 using ScriptableObjects;
 using UnityEngine;
 using Enums;
+using ScriptableObjects.EventChannel;
 
 namespace GameFlow
 {

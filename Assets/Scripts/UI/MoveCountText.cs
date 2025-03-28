@@ -1,4 +1,5 @@
 using ScriptableObjects;
+using ScriptableObjects.EventChannel;
 using UnityEngine;
 using TMPro;
 
@@ -23,6 +24,7 @@ namespace UI
         private void OnMoveCountChanged(int moveCount)
         {
             int remainingMoves = levelSettings.maxMoves - moveCount;
+            remainingMoves = Mathf.Clamp(remainingMoves, 0, levelSettings.maxMoves);
             moveCountText.text = remainingMoves.ToString();
         }
     }

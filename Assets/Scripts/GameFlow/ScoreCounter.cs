@@ -1,6 +1,5 @@
-using System;
 using System.Collections.Generic;
-using ScriptableObjects;
+using ScriptableObjects.EventChannel;
 using UnityEngine;
 
 namespace GameFlow
@@ -9,7 +8,7 @@ namespace GameFlow
     {
         [SerializeField] private ChipCollectionEventChannel chipCollectionEventChannel;
         [SerializeField] private ScoreCountChangeEventChannel scoreCountChangeEventChannel;
-        public int Score { get; private set; } = 0;
+        public int Score { get; private set; }
         
         private void OnEnable()
         {

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Core.Data;
 using Enums;
 using ScriptableObjects;
+using ScriptableObjects.EventChannel;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -37,7 +38,7 @@ namespace Core
         {
             for (int y = 0; y < levelSettings.height; y++)
             {
-                for (int x = 0; x < levelSettings.height; x++)
+                for (int x = 0; x < levelSettings.width; x++)
                 {
                     CreateChip(x, y, true);
                 }

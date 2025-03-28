@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
-using Core.Data;
 using UnityEngine;
 
-namespace ScriptableObjects
+namespace ScriptableObjects.EventChannel
 {
     [CreateAssetMenu(fileName = "ChipCollectionEventChannel", menuName = "ScriptableObjects/ChipCollectionEventChannel")]
     public class ChipCollectionEventChannel: ScriptableObject

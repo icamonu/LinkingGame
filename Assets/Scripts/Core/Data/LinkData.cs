@@ -5,7 +5,7 @@ namespace Core.Data
 {
     public class LinkData: MonoBehaviour
     {
-        public LinkedList<Chip> Link { get; } = new();
+        public LinkedList<Chip> Link { get; } = new ();
         private int _collectedChipType=-1;
         
         public void AddChip(Chip chip)

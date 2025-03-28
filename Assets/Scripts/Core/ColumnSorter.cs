@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Core.Data;
-using ScriptableObjects;
+using ScriptableObjects.EventChannel;
 using UnityEngine;
 
 namespace Core

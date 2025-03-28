@@ -2,7 +2,7 @@ using System;
 using Enums;
 using UnityEngine;
 
-namespace ScriptableObjects
+namespace ScriptableObjects.EventChannel
 {
     [CreateAssetMenu(fileName = "GameStateChangeEventChannel", menuName = "ScriptableObjects/GameStateChangeEventChannel")]
     public class GameStateChangeEventChannel: ScriptableObject

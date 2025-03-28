@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ScriptableObjects
+namespace ScriptableObjects.EventChannel
 {
     [CreateAssetMenu(fileName = "BoardFillEventChannel", menuName = "ScriptableObjects/BoardFillEventChannel", order = 0)]
     public class BoardFillEventChannel: ScriptableObject

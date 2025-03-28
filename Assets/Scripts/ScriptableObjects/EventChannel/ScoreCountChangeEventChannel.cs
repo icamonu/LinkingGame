@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace ScriptableObjects
+namespace ScriptableObjects.EventChannel
 {
     [CreateAssetMenu(fileName = "ScoreCountChangeEventChannel", menuName = "ScriptableObjects/ScoreCountChangeEventChannel")]
     public class ScoreCountChangeEventChannel: ScriptableObject
